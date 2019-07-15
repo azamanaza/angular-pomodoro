@@ -1,0 +1,11 @@
+mat-grid-tile {
+  mat-card {
+    cursor: pointer;
+  }
+
+  &.current {
+    mat-card {
+      background-color: #ccc;
+    }
+  }
+}

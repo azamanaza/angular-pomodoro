@@ -1,0 +1,17 @@
+<h2>Current Task</h2>
+<mat-card *ngIf="currentTask">
+  <mat-card-title>
+    {{currentTask?.title}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{currentTask?.description}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    {{currentTask?.timeElapsed}} / {{currentTask?.timeLimit}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="playPause()" mat-raised-button color="primary">
+      <span *ngIf="!currentTask.isInProgress(); else pauseLabel">Start</span><ng-template #pauseLabel>Pause</ng-template>
+    </button>
+  </mat-card-actions>
+</mat-card>
