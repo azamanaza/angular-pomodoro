@@ -22,4 +22,8 @@ export class CurrentTaskComponent implements OnInit {
   playPause(task: Task) {
     this.taskService.playPauseTask(task);
   }
+
+  createTask() {
+    this.taskService.createTask();
+  }
 }

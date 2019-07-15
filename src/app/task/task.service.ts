@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from './task';
+import { MatDialog } from '@angular/material';
+import { NewTaskDialogComponent } from './new-task-dialog/new-task-dialog.component';
 
 const dummyTasks: Task[] = [
   new Task({title: 'a', description: 'task a'}),
@@ -17,12 +19,26 @@ export class TaskService {
   private tasks: BehaviorSubject<Task[]>;
   private currentTask: BehaviorSubject<Task> = new BehaviorSubject(undefined);
 
-  constructor() {
-    this.tasks = new BehaviorSubject(undefined);
+  constructor(private matDialog: MatDialog) {
+    this.tasks = new BehaviorSubject([]);
     this.setTasks(dummyTasks);
   }
 
-  getTasks$() {
+  createTask() {
+    const dialogRef = this.matDialog.open(NewTaskDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(taskParams => {
+      if (taskParams.timeElapsed) {
+        taskParams.timeElapsed *= 60 * 1000; 
+      }
+      this.tasks.getValue().push(new Task(taskParams));
+    });
+  }
+
+  getTasks$(): Observable<Task[]> {
     return this.tasks.asObservable();
   }
 
@@ -35,11 +51,11 @@ export class TaskService {
     this.currentTask.next(task);
   }
 
-  getCurrentTask() {
+  getCurrentTask(): Task {
     return this.currentTask.getValue();
   }
 
-  getCurrentTask$() {
+  getCurrentTask$(): Observable<Task> {
     return this.currentTask.asObservable();
   }
 
