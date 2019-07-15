@@ -1,6 +1,9 @@
 {
   "name": "angular-pomodoro",
   "version": "0.0.0",
+  "description": "A simple pomodoro app built on angular",
+  "license": "MIT",
+  "keywords": "Angular, Typescript, Pomodoro",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
