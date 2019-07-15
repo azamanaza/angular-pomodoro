@@ -10,6 +10,7 @@ import { CurrentTaskComponent } from './task/current-task/current-task.component
 import { TaskListComponent } from './task/task-list/task-list.component';
 import { NewTaskDialogComponent } from './task/new-task-dialog/new-task-dialog.component';
 import { NewTaskButtonComponent } from './task/new-task-button/new-task-button.component';
+import { TaskListToolbarComponent } from './task/task-list/task-list-toolbar/task-list-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NewTaskButtonComponent } from './task/new-task-button/new-task-button.c
     CurrentTaskComponent,
     TaskListComponent,
     NewTaskDialogComponent,
-    NewTaskButtonComponent
+    NewTaskButtonComponent,
+    TaskListToolbarComponent
   ],
   entryComponents: [
     NewTaskDialogComponent

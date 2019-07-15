@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatInputModule,
-  MatGridListModule, MatListModule } from '@angular/material';
+  MatGridListModule, MatListModule, MatToolbarModule } from '@angular/material';
 
 const materialModules = [
   MatButtonModule,
@@ -11,8 +11,9 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatGridListModule,
-  MatListModule
-]
+  MatListModule,
+  MatToolbarModule
+];
 
 @NgModule({
   declarations: [],

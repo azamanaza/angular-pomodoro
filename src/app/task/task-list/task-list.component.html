@@ -1,4 +1,5 @@
 <h2>Current Tasks</h2>
+<app-task-list-toolbar></app-task-list-toolbar>
 <div *ngIf="tasks$ | async as tasks; else loading" >
   <ng-container *ngIf="tasks.length; else noTasks">
     <mat-grid-list cols="4">
