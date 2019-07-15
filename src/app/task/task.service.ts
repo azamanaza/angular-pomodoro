@@ -34,7 +34,10 @@ export class TaskService {
       if (taskParams.timeElapsed) {
         taskParams.timeElapsed *= 60 * 1000; 
       }
-      this.tasks.getValue().push(new Task(taskParams));
+
+      const newTask = new Task(taskParams);
+      this.tasks.getValue().push(newTask);
+      this.currentTask.next(this.tasks.getValue().find(task => task.id === newTask.id));
     });
   }
 
