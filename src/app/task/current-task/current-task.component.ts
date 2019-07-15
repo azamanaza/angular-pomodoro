@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { TaskService } from '../task.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-current-task',
@@ -9,15 +10,16 @@ import { TaskService } from '../task.service';
 })
 export class CurrentTaskComponent implements OnInit {
 
-  currentTask: Task = undefined;
+  currentTask$: Observable<Task>;
+
   constructor(private taskService: TaskService) { 
+    this.currentTask$ = taskService.getCurrentTask$();
   }
 
   ngOnInit() {
-    this.taskService.getCurrentTask$().subscribe(task => this.currentTask = task);
   }
 
-  playPause() {
-    this.taskService.playPauseTask(this.currentTask);
+  playPause(task: Task) {
+    this.taskService.playPauseTask(task);
   }
 }

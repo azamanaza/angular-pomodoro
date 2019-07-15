@@ -1,17 +1,22 @@
 <h2>Current Task</h2>
-<mat-card *ngIf="currentTask">
-  <mat-card-title>
-    {{currentTask?.title}}
-  </mat-card-title>
-  <mat-card-subtitle>
-    {{currentTask?.description}}
-  </mat-card-subtitle>
-  <mat-card-content>
-    {{currentTask?.timeElapsed}} / {{currentTask?.timeLimit}}
-  </mat-card-content>
-  <mat-card-actions>
-    <button (click)="playPause()" mat-raised-button color="primary">
-      <span *ngIf="!currentTask.isInProgress(); else pauseLabel">Start</span><ng-template #pauseLabel>Pause</ng-template>
-    </button>
-  </mat-card-actions>
-</mat-card>
+<div *ngIf="currentTask$ | async as task; else noCurrentTask">
+  <mat-card>
+    <mat-card-title>
+      {{task.title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{task.description}}
+    </mat-card-subtitle>
+    <mat-card-content>
+      {{task.timeElapsed}} / {{task.timeLimit}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="playPause(task)" mat-raised-button color="primary">
+        <span *ngIf="!task.isInProgress(); else pauseLabel">Start</span><ng-template #pauseLabel>Pause</ng-template>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #noCurrentTask>
+  <h3>Select or create a task!</h3>
+</ng-template>

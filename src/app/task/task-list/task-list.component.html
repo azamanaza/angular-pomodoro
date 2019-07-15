@@ -1,12 +1,26 @@
-<mat-grid-list disableRipple="false" cols="4">
-  <mat-grid-tile *ngFor="let task of tasks$ | async" (click)="setCurrentTask(task)" [ngClass]="{current: isCurrentTask(task)}">
-    <mat-card>
-      <mat-card-title>
-        {{task.title}}
-      </mat-card-title>
-      <mat-card-subtitle>
-        {{task.description}}
-      </mat-card-subtitle>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<h2>Current Tasks</h2>
+<div *ngIf="tasks$ | async as tasks; else loading" >
+  <ng-container *ngIf="tasks.length; else noTasks">
+    <mat-grid-list cols="4">
+      <mat-grid-tile *ngFor="let task of tasks" (click)="setCurrentTask(task)" [ngClass]="{current: isCurrentTask(task)}">
+        <mat-card>
+          <mat-card-title>
+            {{task.title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{task.description}}
+          </mat-card-subtitle>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <ng-template #noTasks>
+      <button mat-raised-button color="primary">Create a Task!</button>
+    </ng-template>
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    Loading...
+  </div>
+</ng-template>
