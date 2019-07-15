@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { CurrentTaskComponent } from './task/current-task/current-task.component';
 import { TaskListComponent } from './task/task-list/task-list.component';
 import { NewTaskDialogComponent } from './task/new-task-dialog/new-task-dialog.component';
+import { NewTaskButtonComponent } from './task/new-task-button/new-task-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrentTaskComponent,
     TaskListComponent,
-    NewTaskDialogComponent
+    NewTaskDialogComponent,
+    NewTaskButtonComponent
   ],
   entryComponents: [
     NewTaskDialogComponent

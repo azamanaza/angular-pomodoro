@@ -1,0 +1,4 @@
+<button mat-raised-button *ngIf="isTypeButton(); else link" (click)="openNewTaskDialog()">{{label}}</button>
+<ng-template #link>
+  <a href="#" (click)="openNewTaskDialog()">{{label}}</a>
+</ng-template>
